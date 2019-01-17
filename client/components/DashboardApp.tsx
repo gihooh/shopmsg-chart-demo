@@ -1,9 +1,19 @@
 "use strict";
 import * as React from 'react';
-import { Layout, Menu, Breadcrumb, Icon, Card } from 'antd';
+import axios from 'axios';
+import { Layout, Menu, Breadcrumb, Icon, Card, DatePicker } from 'antd';
+import Reports from './reports/Reports';
 
 const { Header, Content, Footer, Sider } = Layout;
 const SubMenu = Menu.SubMenu;
+
+if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+  // dev code
+  axios.defaults.baseURL = 'http://localhost:5000';
+} else {
+  axios.defaults.baseURL = 'http://localhost:5000';
+  // production code
+}
 
 require('antd/dist/antd.less');
 export default class DashboardApp extends React.Component {
@@ -55,17 +65,7 @@ export default class DashboardApp extends React.Component {
             </Menu.Item>
           </Menu>
         </Sider>
-        <Layout>
-          <Header style={{ background: '#fff', padding: 0 }} />
-          <Content style={{ margin: '0 16px' }}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>Reports</Breadcrumb.Item>
-              <Breadcrumb.Item>Message Receipts & Optins</Breadcrumb.Item>
-            </Breadcrumb>
-            <Card>Put your component here</Card>
-          </Content>
-          <Footer style={{ textAlign: 'center' }}>ShopMessage ©2018</Footer>
-        </Layout>
+        <Reports />
       </Layout>
     );
   }
