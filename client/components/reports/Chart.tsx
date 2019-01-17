@@ -1,4 +1,7 @@
+"use strict";
+
 import React from 'react';
+import { Layout } from 'antd';
 import { Chart, Axis, Tooltip, Geom, Legend } from 'bizcharts';
 
 const cols = {
@@ -25,19 +28,21 @@ class ReportsChart extends React.Component<ReportsChartProp> {
     }
 
     return (
-      <Chart
-        height={400}
-        data={data}
-        scale={cols}
-        forceFit
-      >
-        <Axis name="date" />
-        <Axis name="count" />
-        <Legend />
-        <Tooltip crosshairs={{ type: 'y' }} />
-        <Geom type="line" position="optinsDate*optinsCount" size={1} color="red" />
-        <Geom type="line" position="recipientsDate*recipientsCount" size={1} color="blue" />
-      </Chart>
+      <Layout style={{paddingRight: '15%', border: 'gray solid 1px', backgroundColor: '#fff'}}>
+        <Chart
+          height={400}
+          data={data}
+          scale={cols}
+          forceFit
+        >
+          <Axis name="date" />
+          <Axis name="count" />
+          <Legend />
+          <Tooltip crosshairs={{ type: 'y' }} />
+          <Geom type="line" position="optinsDate*optinsCount" size={1} color="red" />
+          <Geom type="line" position="recipientsDate*recipientsCount" size={1} color="blue" />
+        </Chart>
+      </Layout>
     );
   }
 }

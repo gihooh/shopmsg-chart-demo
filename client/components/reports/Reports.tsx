@@ -1,3 +1,5 @@
+"use strict";
+
 import React from 'react';
 import { connect } from 'react-redux';
 import { Layout, Breadcrumb, Card } from 'antd';
@@ -37,7 +39,7 @@ class Reports extends React.PureComponent<ReportsProp> {
 
   render() {
     return (
-      <Layout style={{paddingRight: '200px'}} >
+      <Layout>
         <Header style={{ background: '#fff', padding: 0, fontSize: '20px', fontWeight: 'bold', paddingLeft: '10px' }} >Reports</Header>
         <Content style={{ margin: '0 16px' }}>
           <Breadcrumb style={{ margin: '16px 0' }}>

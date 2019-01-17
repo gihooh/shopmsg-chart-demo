@@ -1,3 +1,5 @@
+"use strict";
+
 import React, { Children } from 'react';
 import { connect } from 'react-redux';
 import { Layout, DatePicker, Switch } from 'antd';
@@ -15,7 +17,7 @@ interface FilterProps {
 
 const Field = (props: {label: String, children: Object}) => {
   return (
-    <Layout style={{width: '500px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginBottom: '10px'}}>
+    <Layout style={{width: '500px', display: 'flex', flexDirection: 'row', backgroundColor: '#fff', justifyContent: 'space-between',marginBottom: '10px'}}>
       <div style={{width: '100%', display: 'flex', flexDirection: 'row'}} >
         <div style={{width: '25%', textAlign: 'right', paddingRight: '10px'}}>
           {props.label}
@@ -41,7 +43,7 @@ class Filter extends React.PureComponent<FilterProps> {
 
   render() {
     return (
-      <Layout>
+      <Layout style={{backgroundColor: '#fff', border: 'solid gray 1px', padding: '10px 10px', marginBottom: '15px'}}>
         <Content style={{display: 'flex', flexDirection: 'column'}}>
           <Field label='Date Range: '>
             <DatePicker.RangePicker onChange={this.onChangeHandler}/>
