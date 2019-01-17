@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children } from 'react';
 import { connect } from 'react-redux';
 import { Layout, DatePicker, Switch } from 'antd';
 import { fetchOptins, fetchRecipients } from '../../store/actions/reports';
@@ -11,6 +11,21 @@ interface FilterProps {
   onDisplayChange: Function,
   recipientsVisible: boolean,
   optinsVisible: boolean
+}
+
+const Field = (props: {label: String, children: Object}) => {
+  return (
+    <Layout style={{width: '500px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginBottom: '10px'}}>
+      <div style={{width: '100%', display: 'flex', flexDirection: 'row'}} >
+        <div style={{width: '25%', textAlign: 'right', paddingRight: '10px'}}>
+          {props.label}
+        </div>
+        <div style={{width: '75%'}}>
+          {props.children}
+        </div>
+      </div>
+    </Layout>
+  )
 }
 
 class Filter extends React.PureComponent<FilterProps> {
@@ -28,15 +43,15 @@ class Filter extends React.PureComponent<FilterProps> {
     return (
       <Layout>
         <Content style={{display: 'flex', flexDirection: 'column'}}>
-          <Layout style={{width: '500px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-            Date Range: <DatePicker.RangePicker onChange={this.onChangeHandler}/>
-          </Layout>
-          <Layout style={{width: '200px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-            Show Optins: <Switch onChange={(e) => this.props.onDisplayChange({isOptinsVisible: e})} checked={this.props.optinsVisible}/>
-          </Layout>
-          <Layout style={{width: '200px', display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-          Show Recipients: <Switch onChange={(e) => this.props.onDisplayChange({isRecipientsVisible: e})} checked={this.props.recipientsVisible} />
-          </Layout>
+          <Field label='Date Range: '>
+            <DatePicker.RangePicker onChange={this.onChangeHandler}/>
+          </Field>
+          <Field label='Show Optins: '>
+            <Switch onChange={(e) => this.props.onDisplayChange({isOptinsVisible: e})} checked={this.props.optinsVisible}/>
+          </Field>
+          <Field label='Show Recipients: '>
+            <Switch onChange={(e) => this.props.onDisplayChange({isRecipientsVisible: e})} checked={this.props.recipientsVisible} />
+          </Field>
         </Content>
       </Layout>
     )
