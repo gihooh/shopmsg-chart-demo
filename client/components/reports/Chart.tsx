@@ -9,22 +9,22 @@ const cols = {
   date: { range: [0, 1] },
 };
 
-interface ReportsChartProp {
+interface ReportsChartProps {
   optins: Object[],
   recipients: Object[],
   recipientsVisible: Boolean,
   optinsVisible: Boolean
 }
 
-class ReportsChart extends React.Component<ReportsChartProp> {
+class ReportsChart extends React.PureComponent<ReportsChartProps> {
   render() {
     const {recipientsVisible, optinsVisible} = this.props;
-    let data: Object[] = []
+    let data: Object[] = [];
     if (recipientsVisible) {
-      data = [...data, ...this.props.optins]
+      data = [...data, ...this.props.optins];
     }
     if (optinsVisible) {
-      data = [...data, ...this.props.recipients]
+      data = [...data, ...this.props.recipients];
     }
 
     return (

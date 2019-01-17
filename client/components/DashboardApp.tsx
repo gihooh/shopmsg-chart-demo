@@ -1,8 +1,8 @@
 "use strict";
 import * as React from 'react';
 import axios from 'axios';
-import { Layout, Menu, Breadcrumb, Icon, Card, DatePicker } from 'antd';
-import Reports from './reports/Reports';
+import { Layout, Menu, Icon } from 'antd';
+import Reports from './reports/Index';
 
 const { Sider } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -11,8 +11,8 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
   // dev code
   axios.defaults.baseURL = 'http://localhost:5000';
 } else {
-  axios.defaults.baseURL = 'http://localhost:5000';
   // production code
+  axios.defaults.baseURL = 'http://localhost:5000';
 }
 
 require('antd/dist/antd.less');
@@ -22,7 +22,6 @@ export default class DashboardApp extends React.Component {
   };
 
   onCollapse = (collapsed) => {
-    console.log(collapsed);
     this.setState({ collapsed });
   }
 

@@ -2,11 +2,9 @@ import axios from 'axios';
 
 import { onLoadingStart, onLoadingEnd } from './ui';
 
-export const FETCH_OPTINS_START = 'FETCH_OPTINS_START';
 export const FETCH_OPTINS_SUCCESS = 'FETCH_OPTINS_SUCCESS';
 export const FETCH_OPTINS_FAIL = 'FETCH_OPTINS_FAIL';
 
-export const FETCH_RECIPIENTS_START = 'FETCH_RECIPIENTS_START';
 export const FETCH_RECIPIENTS_SUCCESS = 'FETCH_RECEPIENTS_SUCCESS';
 export const FETCH_RECIPIENTS_FAIL = 'FETCH_RECIPIENTS_FAIL';
 

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { Layout, Breadcrumb, Card } from 'antd';
+import { Layout, Breadcrumb } from 'antd';
 
 import Filter from './Filter';
 import Chart from './Chart';
@@ -11,7 +11,7 @@ import LoadingMask from '../LoadingMask';
 
 const { Header, Content, Footer } = Layout;
 
-interface ReportsProp {
+interface ReportsProps {
   optins: Array<Object>,
   recipients: Array<Object>,
   fetchOptins: Function,
@@ -19,7 +19,7 @@ interface ReportsProp {
   loading: boolean
 }
 
-class Reports extends React.PureComponent<ReportsProp> {
+class Reports extends React.PureComponent<ReportsProps> {
   state = {
     isOptinsVisible: true,
     isRecipientsVisible: true,
