@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Layout, Menu, Breadcrumb, Icon, Card, DatePicker } from 'antd';
 import Reports from './reports/Reports';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Sider } = Layout;
 const SubMenu = Menu.SubMenu;
 
 if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {

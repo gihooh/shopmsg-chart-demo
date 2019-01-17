@@ -5,6 +5,7 @@ import { Layout, Breadcrumb, Card } from 'antd';
 import Filter from './Filter';
 import Chart from './Chart';
 import { fetchOptins, fetchRecipients } from '../../store/actions/reports';
+import LoadingMask from '../LoadingMask';
 
 const { Header, Content, Footer } = Layout;
 
@@ -13,6 +14,7 @@ interface ReportsProp {
   recipients: Array<Object>,
   fetchOptins: Function,
   fetchRecipients: Function,
+  loading: boolean
 }
 
 class Reports extends React.PureComponent<ReportsProp> {
@@ -35,7 +37,7 @@ class Reports extends React.PureComponent<ReportsProp> {
 
   render() {
     return (
-      <Layout>
+      <Layout style={{paddingRight: '200px'}} >
         <Header style={{ background: '#fff', padding: 0, fontSize: '20px', fontWeight: 'bold', paddingLeft: '10px' }} >Reports</Header>
         <Content style={{ margin: '0 16px' }}>
           <Breadcrumb style={{ margin: '16px 0' }}>
@@ -48,6 +50,7 @@ class Reports extends React.PureComponent<ReportsProp> {
            optinsVisible={this.state.isOptinsVisible} recipientsVisible={this.state.isRecipientsVisible}/>
         </Content>
         <Footer style={{ textAlign: 'center' }}>ShopMessage ©2018</Footer>
+        {this.props.loading ? <LoadingMask /> : null}
       </Layout>
     )
   }
@@ -56,6 +59,7 @@ class Reports extends React.PureComponent<ReportsProp> {
 const mapStateToProps = state => ({
   optins: state.reports.optins,
   recipients: state.reports.recipients,
+  loading: state.ui.loading,
 });
 
 const mapDispatchToProps = dispatch => ({
